@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "2527871937",
+    "project_id": "kidfun-9ed0e",
+    "storage_bucket": "kidfun-9ed0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2527871937:android:e71cd6a51fbbf6a8dd6540",
+        "android_client_info": {
+          "package_name": "com.proyecto.kidfun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2527871937-74vinbonv8eg0f38eubk3dnhqh1skgvd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-m6UssKlr1-Hsu6IOMT1i4R-MuB3mhhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2527871937-74vinbonv8eg0f38eubk3dnhqh1skgvd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

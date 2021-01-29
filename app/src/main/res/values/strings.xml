@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">KIDFUN</string>
+    <string name="facebook_app_id">1292099617827633</string>
+    <string name="fb_login_protocol_scheme">fb1292099617827633</string>
+
+    <string name="ApiKey" translatable="false">RgDjKfUcnDwNz8AMz09meZyrx</string>
+    <string name="ApiKeySecret" translatable="false">VEp5EtAsRzsRXJiSiFwuzMz9em7brjIj6zOXbc7aHzUoi4RORc</string>
+
+</resources>
