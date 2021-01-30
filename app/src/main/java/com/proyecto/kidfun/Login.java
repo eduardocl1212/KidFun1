@@ -159,6 +159,8 @@ public class Login extends AppCompatActivity {
         NoTengo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Registros.putExtra("Plataforma","NO");
                 startActivity(Registros);
             }
         });
