@@ -2,6 +2,7 @@ package com.proyecto.kidfun;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -83,6 +84,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         /*
         TwitterAuthConfig mTwitterAuthConfig = new TwitterAuthConfig(getString(R.string.ApiKey),
                 getString(R.string.ApiKeySecret));
@@ -385,9 +387,9 @@ public class Login extends AppCompatActivity {
 
                 boolean data = true;
                 if (data) {
+                    finish();
                     startActivity(HomeActivity);
 
-                    finish();
                 } else {
                     mAuth.signOut();
                     userPassword.setText("");
@@ -408,6 +410,7 @@ public class Login extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 //¿SI EXISTE ES PORQUE YA PASO EL REGISTRO NO?
+                                finish();
                                 startActivity(HomeActivity);
                             } else {
                                 Log.d("EXISTES?", "No Existe");
