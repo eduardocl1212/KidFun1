@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +70,7 @@ public class Login extends AppCompatActivity {
     private TwitterLoginButton TwitterLog;
     private EditText userEmail, userPassword;
     private Button btnSend;
+    private ProgressBar pgrLogin;
     private TextView NoTengo;
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
@@ -81,14 +83,17 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
         TwitterAuthConfig mTwitterAuthConfig = new TwitterAuthConfig(getString(R.string.ApiKey),
                 getString(R.string.ApiKeySecret));
         TwitterConfig twitterConfig = new TwitterConfig.Builder(this)
                 .twitterAuthConfig(mTwitterAuthConfig)
                 .build();
         Twitter.initialize(twitterConfig);
-        setContentView(R.layout.activity_login);
 
+
+         */
+        setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         userEmail = findViewById(R.id.logEmail);
         userPassword = findViewById(R.id.logPassword);
@@ -99,12 +104,15 @@ public class Login extends AppCompatActivity {
         NoTengo = findViewById(R.id.btnNotengo);
         FaceLog = findViewById(R.id.fab_fb);
         GoogleLog = findViewById(R.id.fab_google);
-        TwitterLog = findViewById(R.id.fab_twitter);
+        //TwitterLog = findViewById(R.id.fab_twitter);
         callbackManager = CallbackManager.Factory.create();
         createRequest();
 
+        pgrLogin = findViewById(R.id.pgrLogin);
 
+        //pgrLogin.setVisibility(View.INVISIBLE);
 
+        /*
         TwitterLog.setEnabled(true);
 
         TwitterLog.setCallback(new Callback<TwitterSession>() {
@@ -120,6 +128,8 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
+         */
 
         GoogleLog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,14 +179,14 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btnSend.setVisibility(View.INVISIBLE);
-
+                pgrLogin.setVisibility(View.VISIBLE);
                 final String mail = userEmail.getText().toString();
                 final String pass = userPassword.getText().toString();
 
                 if (mail.isEmpty() || pass.isEmpty()){
                     Toast.makeText(Login.this, "Falta algo", Toast.LENGTH_SHORT).show();
                     btnSend.setVisibility(View.VISIBLE);
-                    
+                    pgrLogin.setVisibility(View.INVISIBLE);
                 }
                 else{
                     EntrarSistema(mail,pass);
@@ -318,9 +328,11 @@ public class Login extends AppCompatActivity {
                 if (task.isSuccessful()) {
 
                     btnSend.setVisibility(View.VISIBLE);
+                    pgrLogin.setVisibility(View.INVISIBLE);
                     updateUI();
                 } else {
                     btnSend.setVisibility(View.VISIBLE);
+                    pgrLogin.setVisibility(View.INVISIBLE);
                     //MostrarMensaje("No hemos podido encontrar tu cuenta verifica tus datos");
                     Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
