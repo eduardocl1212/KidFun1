@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +28,7 @@ import java.util.Map;
 public class registro extends AppCompatActivity {
     private EditText userEmail, userPassword, userNumero , userName, userVPassword;
     private Button btnLoad;
+    private ProgressBar pgrLoad;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
@@ -37,6 +39,7 @@ public class registro extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         Intent intent=getIntent();
+        pgrLoad = findViewById(R.id.pbrLoading);
         userName = findViewById(R.id.proName);
         userEmail = findViewById(R.id.proEmail);
         userPassword = findViewById(R.id.regPassword);
@@ -62,6 +65,7 @@ public class registro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btnLoad.setVisibility(View.INVISIBLE);
+                pgrLoad.setVisibility(View.VISIBLE);
                 final String email = userEmail.getText().toString();
                 final String password = userPassword.getText().toString();
                 final String VPassword = userVPassword.getText().toString();
@@ -74,7 +78,7 @@ public class registro extends AppCompatActivity {
                     else{
                         //showAlerterError("Algo falta", "Algo falta verificalo");
                         btnLoad.setVisibility(View.VISIBLE);
-
+                        pgrLoad.setVisibility(View.INVISIBLE);
                     }
 
                 }
@@ -82,6 +86,7 @@ public class registro extends AppCompatActivity {
                     if(email.isEmpty() || password.isEmpty() || VPassword.isEmpty() || name.isEmpty() || telefono.isEmpty()){
                         Toast.makeText(registro.this, "Falta algo Checa tus datos", Toast.LENGTH_SHORT).show();
                         btnLoad.setVisibility(View.VISIBLE);
+                        pgrLoad.setVisibility(View.INVISIBLE);
                     }
                     else{
                         if(password.equals(VPassword)){
@@ -92,6 +97,7 @@ public class registro extends AppCompatActivity {
                             userVPassword.setText("");
                             Toast.makeText(registro.this, "Las constraseña no son las mismas", Toast.LENGTH_SHORT).show();
                             btnLoad.setVisibility(View.VISIBLE);
+                            pgrLoad.setVisibility(View.INVISIBLE);
                         }
                     }
                 }

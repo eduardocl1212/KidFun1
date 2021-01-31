@@ -264,6 +264,15 @@ public class Login extends AppCompatActivity {
                 });
     }
 
+    /*
+    ######
+
+    VERIFICAR QUE EL CODIGO COMPILADO SEA EL MISMO REGISTRADO EN FACEBOOK
+    ESTE CODIO LO GENERARA
+
+
+    ######
+     */
     private void printKeyHash() {
         // Add code to print out the key hash
         try {
@@ -271,7 +280,7 @@ public class Login extends AppCompatActivity {
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                Log.e("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
         } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
             Log.e("KeyHash:", e.toString());
